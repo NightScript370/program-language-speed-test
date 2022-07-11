@@ -15,8 +15,7 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
+  while:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -47,12 +46,20 @@ jobs:
           python-version: "3.10"
       - name: Compile & Run the C script
         run: |
-          g++ cpp.cpp -o cpp
+          g++ ./loop_while/cpp.cpp -o cpp
           time ./cpp
       - name: Run the Python script
-        run: time python3 python.py
+        run: time python3 loop_while/python.py
       - name: Run the JS file under each non-browser runtime engine
         run: |
-          time node javascript.js
-          time deno run javascript.js
-          time bun javascript.js
+          time node loop_while/javascript.js
+          time deno run loop_while/javascript.js
+          time bun loop_while/javascript.js
+  for:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - run: print "Nothing yet!"
